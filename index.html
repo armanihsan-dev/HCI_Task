@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MediBook – Book a Doctor Appointment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="user">
+    <header class="top">
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        "
+      >
+        <img src="./logo.svg" alt="" />
+        <a class="brand" href="index.html">MediBook</a>
+      </div>
+      <nav>
+        <a class="on" href="index.html">Book</a><a href="admin.html">Admin</a>
+      </nav>
+    </header>
+    <main class="wrap">
+      <div class="hero">
+        <h1>Book your doctor appointment</h1>
+        <p class="mute">
+          Choose a doctor, pick a free time slot, and the clinic will confirm
+          your visit.
+        </p>
+      </div>
+      <div class="cols">
+        <form id="appForm" class="card" novalidate>
+          <h2>Appointment details</h2>
+          <div class="grid">
+            <label
+              >Full name<input
+                name="name"
+                autocomplete="name"
+                maxlength="40" /><small class="err" data-for="name"></small
+            ></label>
+            <label
+              >Email<input
+                name="email"
+                type="email"
+                autocomplete="email" /><small
+                class="err"
+                data-for="email"
+              ></small
+            ></label>
+            <label
+              >Phone<input
+                name="phone"
+                type="tel"
+                placeholder="+923001234567"
+                autocomplete="tel" /><small class="err" data-for="phone"></small
+            ></label>
+            <label
+              >Age<input name="age" type="number" min="1" max="120" /><small
+                class="err"
+                data-for="age"
+              ></small
+            ></label>
+            <label class="full"
+              >Doctor<select name="doctor"></select
+              ><small class="err" data-for="doctor"></small
+            ></label>
+            <label
+              >Date<input name="date" type="date" /><small
+                class="err"
+                data-for="date"
+              ></small
+            ></label>
+            <label
+              >Time slot<select name="time"></select
+              ><small class="err" data-for="time"></small
+            ></label>
+            <label class="full"
+              >Reason for visit<textarea
+                name="reason"
+                maxlength="200"
+              ></textarea
+              ><small class="err" data-for="reason"></small
+            ></label>
+          </div>
+          <button class="btn" type="submit" style="margin-top: 1rem">
+            Book appointment
+          </button>
+          <div id="done" class="ok" role="status" hidden></div>
+        </form>
+        <section class="card">
+          <h2>Check my appointments</h2>
+          <div class="row">
+            <input
+              id="lookEmail"
+              type="email"
+              placeholder="Email used for booking"
+              aria-label="Email"
+            />
+            <button id="lookBtn" class="btn" type="button">Search</button>
+          </div>
+          <small class="err" id="lookErr"></small>
+          <div id="mine"></div>
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MediBook – Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+<header class="top">
+  <a class="brand" href="index.html">MediBook</a>
+  <nav><a href="index.html">Book</a><a class="on" href="admin.html">Admin</a><button id="logout" class="btn ghost sm" hidden>Log out</button></nav>
+</header>
+<main class="wrap">
+  <section id="login" class="card login">
+    <h2>Admin login</h2>
+    <form id="loginForm" novalidate>
+      <div class="grid">
+        <label class="full">Username<input name="user" autocomplete="username"><small class="err" data-for="user"></small></label>
+        <label class="full">Password<input name="pass" type="password" autocomplete="current-password"><small class="err" data-for="pass"></small></label>
+      </div>
+      <button class="btn" type="submit" style="margin-top:1rem">Log in</button>
+      <p class="mute">Demo login: admin / admin123</p>
+    </form>
+  </section>
+
+  <div id="panel" hidden>
+    <div class="hero"><h1>Admin dashboard</h1><p class="mute">Manage appointments and doctors.</p></div>
+    <div class="stats" id="stats"></div>
+
+    <section class="card">
+      <h2>All appointments</h2>
+      <div class="row" style="margin-bottom:1rem">
+        <input id="fSearch" placeholder="Search by patient, email, doctor or ID" aria-label="Search">
+        <select id="fStatus" aria-label="Filter by status"><option value="">All statuses</option><option>Pending</option><option>Scheduled</option><option>Cancelled</option></select>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>ID</th><th>Patient</th><th>Doctor</th><th>Date and time</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Doctors</h2>
+      <form id="docForm" novalidate>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+          <label>Name<input name="name" placeholder="Dr. Full Name" maxlength="40"><small class="err" data-for="name"></small></label>
+          <label>Specialization<input name="spec" placeholder="Cardiology" maxlength="30"><small class="err" data-for="spec"></small></label>
+          <label>Experience (years)<input name="exp" type="number" min="0" max="60"><small class="err" data-for="exp"></small></label>
+        </div>
+        <button class="btn" type="submit" style="margin-top:.6rem">Add doctor</button>
+      </form>
+      <div id="docs" style="margin-top:1rem"></div>
+    </section>
+  </div>
+</main>
+
+<dialog id="dlg">
+  <h2>Schedule appointment</h2>
+  <p class="mute" id="dlgInfo"></p>
+  <form id="dlgForm" novalidate>
+    <div class="grid">
+      <label>Date<input name="date" type="date"><small class="err" data-for="date"></small></label>
+      <label>Time slot<select name="time"></select><small class="err" data-for="time"></small></label>
+    </div>
+    <div class="row" style="margin-top:1rem;justify-content:flex-end">
+      <button type="button" id="dlgCancel" class="btn ghost">Close</button>
+      <button type="submit" class="btn">Confirm schedule</button>
+    </div>
+  </form>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
